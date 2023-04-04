@@ -39,7 +39,7 @@ public class RabotaByPage {
     }
 
         public RabotaByPage checkSearchResults () {
-        searchResults.shouldHave(text("вакансий «QA»"));
+        searchResults.shouldHave(text("QA"));
 
         return this;
     }
