@@ -5,25 +5,18 @@ import org.aeonbits.owner.Config;
 @Config.Sources({
         "classpath:${env}.properties"
 })
+
+
 public interface WebDriverConfig extends Config {
-
-
-    @Key("baseUrl")
-    @DefaultValue("https://rabota.by/")
-    String getBaseUrl();
 
     @Key("browser")
     @DefaultValue("CHROME")
     String getBrowser();
 
-    @Key("version")
-    @DefaultValue("100.0")
+    @Key("browser_version")
+    @DefaultValue("100")
     String getBrowserVersion();
 
     @Key("remoteUrl")
-    String getRemoteUrl();
-
-    @Key("browserSize")
-    @DefaultValue("1920x1080")
-    String getBrowserSize();
+    String getRemoteURL();
 }

@@ -1,11 +1,13 @@
 package config;
 
 import com.codeborne.selenide.Configuration;
+import tests.TestBase;
 import org.aeonbits.owner.ConfigFactory;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.util.Map;
 
-
-public class WebDriverProvider {
+public class WebDriverProvider extends TestBase {
     private WebDriverConfig config;
 
     public WebDriverProvider() {
@@ -14,21 +16,16 @@ public class WebDriverProvider {
     }
 
     private void createWebDriver() {
-        switch (config.getBrowser().toLowerCase()) {
-            case "chrome":
-                Configuration.browser = "chrome";
-                break;
-            case "firefox":
-                Configuration.browser = "firefox";
-                break;
-            default:
-                throw new RuntimeException(config.getBrowser());
-        }
-
-
-        Configuration.baseUrl = config.getBaseUrl();
+        Configuration.browserSize = "1920x1080";
+        Configuration.browser = config.getBrowser();
         Configuration.browserVersion = config.getBrowserVersion();
-        Configuration.remote = config.getRemoteUrl();
-        Configuration.browserSize = config.getBrowserSize();
+        Configuration.remote = config.getRemoteURL();
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
     }
 }
