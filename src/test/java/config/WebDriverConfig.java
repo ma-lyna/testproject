@@ -7,6 +7,7 @@ import org.aeonbits.owner.Config;
 })
 public interface WebDriverConfig extends Config {
 
+
     @Key("baseUrl")
     @DefaultValue("https://rabota.by/")
     String getBaseUrl();
@@ -19,10 +20,10 @@ public interface WebDriverConfig extends Config {
     @DefaultValue("100.0")
     String getBrowserVersion();
 
+    @Key("remoteUrl")
+    String getRemoteUrl();
+
     @Key("browserSize")
     @DefaultValue("1920x1080")
     String getBrowserSize();
-
-    @Key("remoteUrl")
-    String getRemoteURL();
 }
