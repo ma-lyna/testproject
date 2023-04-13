@@ -1,23 +1,18 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import config.ProjectConfiguration;
-import config.WebConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import pages.RabotaByPage;
 
 import static com.codeborne.selenide.Selenide.open;
+import static config.WebDriverProvider.setConfig;
+
 
 public class TestBase {
-
-    private static WebConfig config;
-    private static ProjectConfiguration configuration;
 
     RabotaByPage rabotaByPage = new RabotaByPage();
 
@@ -36,15 +31,9 @@ public class TestBase {
     //        Configuration.browserCapabilities = capabilities;
 
 
-                config = ConfigFactory.create(WebConfig.class, System.getProperties());
-                configuration = new ProjectConfiguration();
-                configuration.webConfig(config);
+                setConfig();
+            }
 
-                Configuration.pageLoadTimeout = 10000;
-                Configuration.timeout = 10000;
-                Configuration.headless = false;
-                Configuration.holdBrowserOpen = false;
-        }
 
         @BeforeEach
         void addListener(){
