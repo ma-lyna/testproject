@@ -7,7 +7,7 @@ public class ProjectConfiguration {
     public void webConfig(WebConfig config) {
         Configuration.baseUrl = config.getBaseUrl();
         Configuration.browser = config.getBrowser();
-        Configuration.browserVersion = config.getBrowserVersion();
+     //   Configuration.browserVersion = config.getBrowserVersion();
         Configuration.browserSize = config.getBrowserSize();
 
         if (config.IsRemote()) {
