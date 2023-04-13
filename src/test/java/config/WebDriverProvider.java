@@ -7,8 +7,10 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
-public class WebDriverProvider extends TestBase {
-    private WebDriverConfig config;
+
+
+public class WebDriverProvider extends TestBase  {
+    private final WebDriverConfig config;
 
     public WebDriverProvider() {
         this.config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
@@ -16,10 +18,11 @@ public class WebDriverProvider extends TestBase {
     }
 
     private void createWebDriver() {
-        Configuration.browserSize = "1920x1080";
         Configuration.browser = config.getBrowser();
+        Configuration.baseUrl = config.getBaseUrl();
         Configuration.browserVersion = config.getBrowserVersion();
         Configuration.remote = config.getRemoteURL();
+        Configuration.browserSize = config.getBrowserSize();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -28,4 +31,6 @@ public class WebDriverProvider extends TestBase {
         ));
         Configuration.browserCapabilities = capabilities;
     }
+
+
 }

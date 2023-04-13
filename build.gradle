@@ -48,12 +48,6 @@ tasks.withType(JavaCompile) {
 }
 
 test {
-    useJUnitPlatform()
-    //-PbaseUrl=https://github.com -Pbrowser=FIREFOX
-    systemProperties(System.getProperties())
-}
-
-tasks.withType(Test) {
     systemProperties(System.getProperties())
     useJUnitPlatform()
 }

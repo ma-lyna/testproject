@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.WebDriverProvider;
 import helpers.Attach;
@@ -9,12 +10,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import pages.RabotaByPage;
 
+
+
+
 import static com.codeborne.selenide.Selenide.open;
 
 
 
 
-public class TestBase {
+public abstract class TestBase {
 
 
     RabotaByPage rabotaByPage = new RabotaByPage();
@@ -43,7 +47,9 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
+
         WebDriverProvider provider = new WebDriverProvider();
+
     }
 
 
@@ -51,8 +57,12 @@ public class TestBase {
 
         @BeforeEach
 
-        void beforeEach() {
 
+            public void helpersConfig() {
+                SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+                Selenide.clearBrowserCookies();
+
+            }
 
 
 
@@ -60,9 +70,9 @@ public class TestBase {
         // SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
 
-             SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-                open("https://rabota.by");
-        }
+      //       SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+       //         open("https://rabota.by");
+
 
         @AfterEach
         void addAttachments(){
