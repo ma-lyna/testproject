@@ -16,7 +16,7 @@ public class WebDriverProvider {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         Configuration.browserCapabilities = capabilities;
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
+      //  capabilities.setCapability("enableVNC", true);
+      //  capabilities.setCapability("enableVideo", true);
     }
 }
