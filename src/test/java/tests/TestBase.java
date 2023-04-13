@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RabotaByPage;
 
+import static com.codeborne.selenide.Selenide.open;
+
 
 public class TestBase {
 
@@ -36,11 +38,11 @@ public class TestBase {
 
         @BeforeEach
         void addListener(){
-         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        // SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
 
-            //    SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-            //    open("https://rabota.by");
+             SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+                open("https://rabota.by");
         }
 
         @AfterEach
